@@ -1,0 +1,8 @@
+name: EmberLib
+version: '${project.version}'
+main: mbarrr.github.emberlib.EmberLib
+api-version: 1.16
+commands:
+  debugcommand:
+    usage: as
+    description: asd
