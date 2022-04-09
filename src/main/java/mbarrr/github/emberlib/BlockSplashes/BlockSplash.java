@@ -23,7 +23,7 @@ public class BlockSplash implements Listener {
     private Random random = new Random();
     private int numBlocks;
     private Location startLoc;
-    private int velocity;
+    private double velocity;
     private List<Material> blockTypes;
 
     /**
@@ -34,7 +34,7 @@ public class BlockSplash implements Listener {
      * @param blockTypes Type of blocks to be spawned, or null for type of block at location
      * @param instance Plugin instance
      */
-    public BlockSplash(int numBlocks, Location startLoc, int velocity, List<Material> blockTypes, JavaPlugin instance) {
+    public BlockSplash(int numBlocks, Location startLoc, double velocity, List<Material> blockTypes, JavaPlugin instance) {
 
         this.blockTypes = blockTypes;
 
