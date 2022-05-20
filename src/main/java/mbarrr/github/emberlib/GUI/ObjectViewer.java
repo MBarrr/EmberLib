@@ -24,19 +24,24 @@ public class ObjectViewer<T extends IItemObject> extends GUI{
 
             String adminInfo = customItem.getAdminInfo();
 
-            if(adminInfo == null) continue;
+            if(adminInfo != null) {
 
-            List<String> lore = icon.getItemMeta().getLore();
+                List<String> lore = icon.getItemMeta().getLore();
 
-            if(lore == null) lore = new ArrayList<>();
+                if (lore == null) lore = new ArrayList<>();
 
-            lore.add("********** ADMIN INFO **********");
 
-            lore.add(adminInfo);
+                lore.add("********** ADMIN INFO **********");
 
-            ItemMeta meta = icon.getItemMeta();
-            meta.setLore(lore);
-            icon.setItemMeta(meta);
+                lore.add(adminInfo);
+
+                ItemMeta meta = icon.getItemMeta();
+                meta.setLore(lore);
+                icon.setItemMeta(meta);
+            }
+
+
+
 
             addItem(icon, menuKey, i, i, 0);
         }
