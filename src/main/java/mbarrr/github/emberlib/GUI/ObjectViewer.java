@@ -40,9 +40,6 @@ public class ObjectViewer<T extends IItemObject> extends GUI{
                 icon.setItemMeta(meta);
             }
 
-
-
-
             addItem(icon, menuKey, i, i, 0);
         }
     }
