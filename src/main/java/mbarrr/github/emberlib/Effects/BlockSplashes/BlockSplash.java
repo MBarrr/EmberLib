@@ -1,6 +1,5 @@
-package mbarrr.github.emberlib.BlockSplashes;
+package mbarrr.github.emberlib.Effects.BlockSplashes;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.FallingBlock;
@@ -10,7 +9,6 @@ import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 
-import javax.lang.model.element.VariableElement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
