@@ -1,15 +1,11 @@
 package mbarrr.github.emberlib;
 
-import mbarrr.github.emberlib.BlockSplashes.BlockSplash;
-import org.bukkit.Material;
+import mbarrr.github.emberlib.Effects.Particles.ParticleStructures.SpellCastAnimation;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class debugCommand implements CommandExecutor {
 
@@ -27,13 +23,12 @@ public class debugCommand implements CommandExecutor {
 
         Player player = (Player) sender;
 
-        List<Material> blockTypes = new ArrayList<>();
-        blockTypes.add(Material.DIRT);
-        blockTypes.add(Material.GRASS_BLOCK);
-        blockTypes.add(Material.GRAVEL);
-        blockTypes.add(Material.STONE);
+        player.sendMessage("runbdsing");
 
-        BlockSplash blockSplash = new BlockSplash(10, player.getLocation().subtract(0, 1, 0), 1, blockTypes, instance);
+        double radius = Double.parseDouble(args[0]);
+        int duration = Integer.parseInt(args[1]);
+
+        SpellCastAnimation spellCastAnimation = new SpellCastAnimation(radius, player.getLocation(), duration);
 
         return true;
     }
