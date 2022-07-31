@@ -14,6 +14,6 @@ public class ParticleCircle extends ParticleStructure {
 
     @Override
     public void setX(){
-        point.add(Math.sqrt(radius * radius - point.getZ() * point.getZ()), 0, 0);
+        getPoint().add(Math.sqrt(getRadius() * getRadius() - getPoint().getZ() * getPoint().getZ()), 0, 0);
     }
 }

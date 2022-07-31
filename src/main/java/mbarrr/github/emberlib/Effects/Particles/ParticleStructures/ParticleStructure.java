@@ -8,16 +8,16 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class ParticleStructure {
 
-    public BukkitRunnable bukkitRunnable; //loop runnable
-    public long period = 1; //time between loops in ticks
-    public Plugin instance; //plugin instance
-    public World world; //world to spawn particles in
-    public Particle.DustOptions dustOptions; //particle settings
-    public Location centerPoint; //centre point of formation
-
-    public double radius; //distance from the centre on the X axis that the new point starts from
-    public double xIncrement; //amount to increment X by
-    public Location point; //our point to work with
+    private BukkitRunnable bukkitRunnable; //loop runnable
+    private BukkitRunnable cancel;
+    private long period = 1; //time between loops in ticks
+    private Plugin instance; //plugin instance
+    private World world; //world to spawn particles in
+    private Particle.DustOptions dustOptions; //particle settings
+    private Location centerPoint; //centre point of formation
+    private double radius; //distance from the centre on the X axis that the new point starts from
+    protected double xIncrement; //amount to increment X by
+    private Location point; //our point to work with
 
     private int duration;
 
@@ -52,7 +52,7 @@ public class ParticleStructure {
     }
 
     public void cancellationRunnable(){
-        BukkitRunnable cancel = new BukkitRunnable() {
+        cancel = new BukkitRunnable() {
             @Override
             public void run() {
                 bukkitRunnable.cancel();
@@ -93,5 +93,46 @@ public class ParticleStructure {
     //end the loop
     public void stop(){
         bukkitRunnable.cancel();
+        cancel.cancel();;
+    }
+
+    public BukkitRunnable getBukkitRunnable() {
+        return bukkitRunnable;
+    }
+
+    public BukkitRunnable getCancel() {
+        return cancel;
+    }
+
+    public long getPeriod() {
+        return period;
+    }
+
+    public Plugin getInstance() {
+        return instance;
+    }
+
+    public World getWorld() {
+        return world;
+    }
+
+    public Particle.DustOptions getDustOptions() {
+        return dustOptions;
+    }
+
+    public Location getCenterPoint() {
+        return centerPoint;
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+
+    public double getxIncrement() {
+        return xIncrement;
+    }
+
+    public Location getPoint() {
+        return point;
     }
 }

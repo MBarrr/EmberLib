@@ -22,6 +22,5 @@ public class UTIL {
         double z2 = secondBound.getZ();
 
         return (location.getX() > x1) && (location.getY() > y1) && (location.getZ() > z1) && (location.getX() < x2) && (location.getY() < y2) && (location.getZ() < z2);
-
     }
 }

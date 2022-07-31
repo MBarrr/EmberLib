@@ -20,10 +20,10 @@ public class ParticleOrb extends ParticleCircle {
     @Override
     public void setY(){
         //if Y value goes outside floor or ceiling, inverse the Y increment
-        if(point.getY() < floor || point.getY() > ceiling){
+        if(getPoint().getY() < floor || getPoint().getY() > ceiling){
             yIncrement*=-1;
         }
         //add the Y increment
-        point.add(0, yIncrement, 0);
+        getPoint().add(0, yIncrement, 0);
     }
 }

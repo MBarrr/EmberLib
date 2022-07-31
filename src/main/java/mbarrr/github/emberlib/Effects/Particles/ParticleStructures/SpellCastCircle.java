@@ -15,6 +15,7 @@ public class SpellCastCircle {
 
     private Location location;
     private BukkitRunnable bukkitRunnable; //loop runnable
+    private BukkitRunnable cancellationRunnable;
     private long period = 2; //time between loops in ticks
     private Plugin instance; //plugin instance
     private World world; //world to spawn particles in
@@ -85,7 +86,7 @@ public class SpellCastCircle {
     //the code that will be executed in the loop
 
     public void loadCancellationRunnable(){
-        BukkitRunnable cancellationRunnable = new BukkitRunnable() {
+        cancellationRunnable = new BukkitRunnable() {
             @Override
             public void run() {
                 bukkitRunnable.cancel();
@@ -103,5 +104,6 @@ public class SpellCastCircle {
     //end the loop
     public void stop(){
         bukkitRunnable.cancel();
+        cancellationRunnable.cancel();
     }
 }

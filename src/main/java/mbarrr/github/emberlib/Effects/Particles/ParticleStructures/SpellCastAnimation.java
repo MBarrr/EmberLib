@@ -11,42 +11,43 @@ public class SpellCastAnimation extends ParticleStructure {
     private Particle.DustOptions dustOptions;
     private int green = 0;
     private int red = 255;
+    private SpellCastCircle spellCastCircle;
 
     public SpellCastAnimation(double radius, Location location, int duration) {
         super(EmberLib.getInstance(), radius, new Particle.DustOptions(Color.GREEN, 2), location, duration);
 
         this.dustOptions = new Particle.DustOptions(Color.GREEN, 2);
 
-        point.add(radius,0,0);
-        point2 = point.clone();
+        getPoint().add(radius,0,0);
+        point2 = getPoint().clone();
 
-        SpellCastCircle spellCastCircle = new SpellCastCircle(location, radius, instance, duration);
+        this.spellCastCircle = new SpellCastCircle(location, radius, getInstance(), duration);
     }
 
     @Override
     public void onTick(){
-        if (point.getZ() < -radius || point.getZ() > radius) {
+        if (getPoint().getZ() < -getRadius() || getPoint().getZ() > getRadius()) {
             xIncrement *= -1;
         }
 
-        point.add(0, 0, xIncrement);
+        getPoint().add(0, 0, xIncrement);
         point2.add(xIncrement, 0,0);
 
         setX();
         setY();
         changeParticleSettings();
 
-        this.green = (int) (green + 255/(getDuration()/period));
-        this.red = (int) (red - 255/(getDuration()/period));
+        this.green = (int) (green + 255/(getDuration()/getPeriod()));
+        this.red = (int) (red - 255/(getDuration()/getPeriod()));
 
         Color color = Color.fromRGB(red, green, 0);
         this.dustOptions = new Particle.DustOptions(color, 2);
 
-        world.spawnParticle(Particle.REDSTONE, centerPoint.clone().add(point), 1, dustOptions);
-        world.spawnParticle(Particle.REDSTONE, centerPoint.clone().add(point2), 1, dustOptions);
+        getWorld().spawnParticle(Particle.REDSTONE, getCenterPoint().clone().add(getPoint()), 1, dustOptions);
+        getWorld().spawnParticle(Particle.REDSTONE, getCenterPoint().clone().add(point2), 1, dustOptions);
 
-        world.spawnParticle(Particle.REDSTONE, centerPoint.clone().add(rotateAroundPoint(point, 90)), 1, dustOptions);
-        world.spawnParticle(Particle.REDSTONE, centerPoint.clone().add(rotateAroundPoint(point2, 90)), 1, dustOptions);
+        getWorld().spawnParticle(Particle.REDSTONE, getCenterPoint().clone().add(rotateAroundPoint(getPoint(), 90)), 1, dustOptions);
+        getWorld().spawnParticle(Particle.REDSTONE, getCenterPoint().clone().add(rotateAroundPoint(point2, 90)), 1, dustOptions);
     }
 
     public Location rotateAroundPoint(Location location, double angle) {
@@ -61,4 +62,10 @@ public class SpellCastAnimation extends ParticleStructure {
         return location;
     }
 
+
+    @Override
+    public void stop() {
+        super.stop();
+        spellCastCircle.stop();
+    }
 }
