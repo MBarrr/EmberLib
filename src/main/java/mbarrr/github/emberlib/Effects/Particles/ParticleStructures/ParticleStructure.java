@@ -124,8 +124,8 @@ public class ParticleStructure {
         return centerPoint;
     }
 
-    public void setPoint(Location location){
-        this.point = location;
+    public void setCentrePoint(Location location){
+        this.centerPoint = location;
     }
 
     public double getRadius() {

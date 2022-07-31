@@ -16,4 +16,8 @@ public final class EmberLib extends JavaPlugin {
     public void onDisable() {
 
     }
+
+    public static EmberLib getInstance(){
+        return (EmberLib) Bukkit.getPluginManager().getPlugin("EmberLib");
+    }
 }

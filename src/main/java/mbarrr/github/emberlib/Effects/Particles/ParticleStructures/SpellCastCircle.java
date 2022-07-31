@@ -54,6 +54,7 @@ public class SpellCastCircle {
 
         if(owner != null){
             point = owner.getLocation();
+            point2 = owner.getLocation();
         }
 
         this.green = (int) (green + 255/(duration/period));

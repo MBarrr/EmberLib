@@ -6,6 +6,7 @@ import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class SpellCastAnimation extends ParticleStructure {
 
@@ -22,22 +23,21 @@ public class SpellCastAnimation extends ParticleStructure {
 
         this.owner = owner;
 
-
-
         this.dustOptions = new Particle.DustOptions(Color.GREEN, 2);
 
         getPoint().add(radius,0,0);
         point2 = getPoint().clone();
 
         this.spellCastCircle = new SpellCastCircle(location, radius, getInstance(), duration, owner);
+
+
     }
 
     @Override
     public void onTick(){
 
         if(owner != null){
-            setPoint(owner.getLocation());
-
+            setCentrePoint(owner.getLocation());
         }
 
         if (getPoint().getZ() < -getRadius() || getPoint().getZ() > getRadius()) {
