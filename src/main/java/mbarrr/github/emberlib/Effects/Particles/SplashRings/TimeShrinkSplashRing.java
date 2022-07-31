@@ -6,7 +6,10 @@ import org.bukkit.Particle;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.potion.PotionEffect;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class TimeShrinkSplashRing extends SplashRing{
     /**
@@ -21,8 +24,8 @@ public class TimeShrinkSplashRing extends SplashRing{
      * @param duration       Time in ticks for the cloud to despawn
      * @param particleType   Type of particle
      */
-    public TimeShrinkSplashRing(Location location, @Nullable LivingEntity sender, @Nullable LivingEntity playerToFollow, float radius, Color color, Plugin instance, int duration, Particle particleType, int setRadiusPerTick) {
-        super(location, sender, playerToFollow, radius, color, instance, duration, particleType);
+    public TimeShrinkSplashRing(Location location, @Nullable LivingEntity sender, @Nullable LivingEntity playerToFollow, float radius, Color color, Plugin instance, int duration, Particle particleType, int setRadiusPerTick, List<PotionEffect> potionEffects) {
+        super(location, sender, playerToFollow, radius, color, instance, duration, particleType, potionEffects);
 
         getAreaEffectCloud().setRadiusPerTick(setRadiusPerTick);
     }

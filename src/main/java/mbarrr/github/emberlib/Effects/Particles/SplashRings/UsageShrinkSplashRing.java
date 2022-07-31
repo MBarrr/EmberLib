@@ -6,7 +6,10 @@ import org.bukkit.Particle;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.potion.PotionEffect;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class UsageShrinkSplashRing extends SplashRing{
     /**
@@ -21,8 +24,8 @@ public class UsageShrinkSplashRing extends SplashRing{
      * @param duration       Time in ticks for the cloud to despawn
      * @param particleType   Type of particle
      */
-    public UsageShrinkSplashRing(Location location, @Nullable LivingEntity sender, @Nullable LivingEntity playerToFollow, float radius, Color color, Plugin instance, int duration, Particle particleType, int usageShrinkSplashRing) {
-        super(location, sender, playerToFollow, radius, color, instance, duration, particleType);
+    public UsageShrinkSplashRing(Location location, @Nullable LivingEntity sender, @Nullable LivingEntity playerToFollow, float radius, Color color, Plugin instance, int duration, Particle particleType, int usageShrinkSplashRing, List<PotionEffect> potionEffects) {
+        super(location, sender, playerToFollow, radius, color, instance, duration, particleType, potionEffects);
         getAreaEffectCloud().setRadiusOnUse(usageShrinkSplashRing);
     }
 }

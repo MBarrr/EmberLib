@@ -1,12 +1,10 @@
 package mbarrr.github.emberlib.Effects.Particles.ParticleStructures;
 
-import mbarrr.github.emberlib.EmberLib;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
 public class SpellCastAnimation extends ParticleStructure {
 

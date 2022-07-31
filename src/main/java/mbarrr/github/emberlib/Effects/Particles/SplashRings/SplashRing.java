@@ -6,8 +6,11 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class SplashRing {
 
@@ -23,6 +26,7 @@ public class SplashRing {
     private Particle particleType;
     private LivingEntity playerToFollow;
     private AreaEffectCloud areaEffectCloud;
+    private List<PotionEffect> potionEffects;
 
     /**
      * SplashRing animation/particle effect. It is essentially a splash lingering potion with extra options
@@ -35,13 +39,14 @@ public class SplashRing {
      * @param duration Time in ticks for the cloud to despawn
      * @param particleType Type of particle
      */
-    public SplashRing(Location location, @Nullable LivingEntity sender, @Nullable LivingEntity playerToFollow, float radius, Color color, Plugin instance, int duration, Particle particleType){
+    public SplashRing(Location location, @Nullable LivingEntity sender, @Nullable LivingEntity playerToFollow, float radius, Color color, Plugin instance, int duration, Particle particleType, List<PotionEffect> potionEffects){
         this.instance = instance;
         this.sender = sender;
         this.playerToFollow = playerToFollow;
         this.location = location;
         this.world = location.getWorld();
         this.period = 1;
+        this.potionEffects = potionEffects;
         this.radius = radius;
         this.duration = duration;
         this.color = color;
@@ -64,6 +69,10 @@ public class SplashRing {
             areaEffectCloud.setRadius(radius);
             areaEffectCloud.setColor(color);
             areaEffectCloud.setDuration(duration);
+
+            for(PotionEffect potionEffect:potionEffects){
+                areaEffectCloud.addCustomEffect(potionEffect, false);
+            }
 
             if(sender != null){
                 areaEffectCloud.setSource(sender);
