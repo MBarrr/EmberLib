@@ -5,6 +5,7 @@ import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.plugin.java.JavaPlugin;
 
 public class SpellCastAnimation extends ParticleStructure {
 
@@ -16,8 +17,8 @@ public class SpellCastAnimation extends ParticleStructure {
     private LivingEntity owner;
 
 
-    public SpellCastAnimation(double radius, Location location, int duration, LivingEntity owner) {
-        super(EmberLib.getInstance(), radius, new Particle.DustOptions(Color.GREEN, 2), location, duration);
+    public SpellCastAnimation(JavaPlugin instance, double radius, Location location, int duration, LivingEntity owner) {
+        super(instance, radius, new Particle.DustOptions(Color.GREEN, 2), location, duration);
 
         this.owner = owner;
 
