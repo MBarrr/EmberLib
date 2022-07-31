@@ -4,6 +4,7 @@ import org.apache.commons.lang.enums.Enum;
 import org.bukkit.*;
 import org.bukkit.entity.AreaEffectCloud;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Spellcaster;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -25,15 +26,16 @@ public class SpellCastCircle {
     int red = 255;
     int green = 0;
 
-
+    private LivingEntity owner;
     private Particle ringParticle = Particle.REDSTONE;
     private Location point;
     private Location point2;
 
-    public SpellCastCircle(Location location, double radius, Plugin instance, int duration){
+    public SpellCastCircle(Location location, double radius, Plugin instance, int duration, LivingEntity owner){
         this.dustOptions = new Particle.DustOptions(Color.GREEN, 1);
         this.location = location;
         this.duration = duration;
+        this.owner = owner;
         this.instance = instance;
         this.world = location.getWorld();
         this.radius = radius;
@@ -49,6 +51,11 @@ public class SpellCastCircle {
 
 
     public void onTick(){
+
+        if(owner != null){
+            point = owner.getLocation();
+        }
+
         this.green = (int) (green + 255/(duration/period));
         this.red = (int) (red - 255/(duration/period));
 

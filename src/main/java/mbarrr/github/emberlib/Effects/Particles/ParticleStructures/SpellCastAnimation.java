@@ -4,6 +4,7 @@ import mbarrr.github.emberlib.EmberLib;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Particle;
+import org.bukkit.entity.LivingEntity;
 
 public class SpellCastAnimation extends ParticleStructure {
 
@@ -12,20 +13,32 @@ public class SpellCastAnimation extends ParticleStructure {
     private int green = 0;
     private int red = 255;
     private SpellCastCircle spellCastCircle;
+    private LivingEntity owner;
 
-    public SpellCastAnimation(double radius, Location location, int duration) {
+
+    public SpellCastAnimation(double radius, Location location, int duration, LivingEntity owner) {
         super(EmberLib.getInstance(), radius, new Particle.DustOptions(Color.GREEN, 2), location, duration);
+
+        this.owner = owner;
+
+
 
         this.dustOptions = new Particle.DustOptions(Color.GREEN, 2);
 
         getPoint().add(radius,0,0);
         point2 = getPoint().clone();
 
-        this.spellCastCircle = new SpellCastCircle(location, radius, getInstance(), duration);
+        this.spellCastCircle = new SpellCastCircle(location, radius, getInstance(), duration, owner);
     }
 
     @Override
     public void onTick(){
+
+        if(owner != null){
+            setPoint(owner.getLocation());
+
+        }
+
         if (getPoint().getZ() < -getRadius() || getPoint().getZ() > getRadius()) {
             xIncrement *= -1;
         }

@@ -28,7 +28,7 @@ public class debugCommand implements CommandExecutor {
         double radius = Double.parseDouble(args[0]);
         int duration = Integer.parseInt(args[1]);
 
-        SpellCastAnimation spellCastAnimation = new SpellCastAnimation(radius, player.getLocation(), duration);
+        SpellCastAnimation spellCastAnimation = new SpellCastAnimation(radius, player.getLocation(), duration, player);
 
         return true;
     }
