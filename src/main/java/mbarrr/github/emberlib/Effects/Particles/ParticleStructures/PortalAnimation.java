@@ -34,39 +34,9 @@ public class PortalAnimation {
                 this.particle = Particle.REVERSE_PORTAL;
                 break;
         }
-
-        start();
     }
 
     protected void onTick(){
-        for(int i = 0; i < numParticles; i++){
-            location.getWorld().spawnParticle(particle, location, 1, offset, 1, offset);
-        }
-    }
-
-    public void start(){
-        runnable = new BukkitRunnable() {
-            @Override
-            public void run() {
-                onTick();
-            }
-        };
-
-        runnable.runTaskTimer(instance, 0, period);
-
-
-        cancellationRunnable = new BukkitRunnable() {
-            @Override
-            public void run() {
-                runnable.cancel();
-            }
-        };
-        cancellationRunnable.runTaskLater(instance, duration);
-
-    }
-
-    public void stop(){
-        cancellationRunnable.cancel();
-        runnable.cancel();
+        location.getWorld().spawnParticle(particle, location, numParticles, offset, 1, offset);
     }
 }
