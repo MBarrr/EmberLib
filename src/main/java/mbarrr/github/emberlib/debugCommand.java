@@ -1,6 +1,7 @@
 package mbarrr.github.emberlib;
 
-import mbarrr.github.emberlib.Effects.Particles.ParticleStructures.SpellCastAnimation;
+import mbarrr.github.emberlib.Effects.Particles.ParticleStructures.BlockSpellAnimation;
+import org.bukkit.Color;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -25,10 +26,26 @@ public class debugCommand implements CommandExecutor {
 
         player.sendMessage("runbdsing");
 
-        double radius = Double.parseDouble(args[0]);
-        int duration = Integer.parseInt(args[1]);
+        /**
+         *         double radius = Double.parseDouble(args[0]);
+         *         int duration = Integer.parseInt(args[1]);
+         *         Particle particleType = Particle.valueOf(args[2]);
+         *         int period = Integer.parseInt(args[3]);
+         *         int numParticles = Integer.parseInt(args[4]);
+         *
+         *         PortalAnimation portalAnimation = new PortalAnimation(EmberLib.getInstance(), period, duration, numParticles, player.getLocation(), radius, particleType);
+         */
 
-        SpellCastAnimation spellCastAnimation = new SpellCastAnimation(EmberLib.getInstance(), radius, player.getLocation(), duration, player);
+        int duration = Integer.parseInt(args[0]);
+        double radius = Double.parseDouble(args[1]);
+        Color startColor = Color.fromRGB(Integer.parseInt(args[2]), Integer.parseInt(args[3]), Integer.parseInt(args[4]));
+        Color endColor = Color.fromRGB(Integer.parseInt(args[5]), Integer.parseInt(args[6]), Integer.parseInt(args[7]));
+        int size = Integer.parseInt(args[8]);
+
+
+        ///debugcommand 200 2 0 255 0 255 0 0 2
+
+        BlockSpellAnimation blockSpellAnimation = new BlockSpellAnimation(EmberLib.getInstance(), radius, size, player.getLocation(), duration, startColor, endColor);
 
         return true;
     }

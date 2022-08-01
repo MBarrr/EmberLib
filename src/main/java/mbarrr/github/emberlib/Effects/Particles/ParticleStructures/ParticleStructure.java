@@ -10,16 +10,16 @@ public class ParticleStructure {
 
     private BukkitRunnable bukkitRunnable; //loop runnable
     private BukkitRunnable cancel;
-    private long period = 1; //time between loops in ticks
-    private Plugin instance; //plugin instance
-    private World world; //world to spawn particles in
+    private final long period = 1; //time between loops in ticks
+    private final Plugin instance; //plugin instance
+    private final World world; //world to spawn particles in
     private Particle.DustOptions dustOptions; //particle settings
     private Location centerPoint; //centre point of formation
-    private double radius; //distance from the centre on the X axis that the new point starts from
+    private final double radius; //distance from the centre on the X axis that the new point starts from
     protected double xIncrement; //amount to increment X by
     private Location point; //our point to work with
 
-    private int duration;
+    private final int duration;
 
     public ParticleStructure(Plugin instance, double radius, Particle.DustOptions dustOptions, Location centerPoint, int duration){
         this.centerPoint = centerPoint;
@@ -93,7 +93,7 @@ public class ParticleStructure {
     //end the loop
     public void stop(){
         bukkitRunnable.cancel();
-        cancel.cancel();;
+        cancel.cancel();
     }
 
     public BukkitRunnable getBukkitRunnable() {
@@ -138,5 +138,13 @@ public class ParticleStructure {
 
     public Location getPoint() {
         return point;
+    }
+
+    public void setPoint(Location location){
+        point = location;
+    }
+
+    public void setDustOptions(Particle.DustOptions dustOptions) {
+        this.dustOptions = dustOptions;
     }
 }

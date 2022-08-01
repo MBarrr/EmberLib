@@ -14,13 +14,13 @@ public final class GUILib{
 
     Plugin instance;
 
-    private String pathStart = "guilib_";
+    private final String pathStart = "guilib_";
 
     NamespacedKey arrowKey;
 
-    private ItemStack leftArrow;
-    private ItemStack rightArrow;
-    private ItemStack parentGUIArrow;
+    private final ItemStack leftArrow;
+    private final ItemStack rightArrow;
+    private final ItemStack parentGUIArrow;
 
 
     public GUILib(Plugin instance){

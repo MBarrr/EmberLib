@@ -4,7 +4,6 @@ import org.bukkit.*;
 import org.bukkit.entity.AreaEffectCloud;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -14,19 +13,19 @@ import java.util.List;
 
 public class SplashRing {
 
-    private Location location;
+    private final Location location;
     private BukkitRunnable bukkitRunnable; //loop runnable
-    private long period; //time between loops in ticks
-    private Plugin instance; //plugin instance
-    private World world; //world to spawn particles in
-    private float radius;
-    private LivingEntity sender;
-    private Color color;
-    private int duration;
-    private Particle particleType;
-    private LivingEntity playerToFollow;
+    private final long period; //time between loops in ticks
+    private final Plugin instance; //plugin instance
+    private final World world; //world to spawn particles in
+    private final float radius;
+    private final LivingEntity sender;
+    private final Color color;
+    private final int duration;
+    private final Particle particleType;
+    private final LivingEntity playerToFollow;
     private AreaEffectCloud areaEffectCloud;
-    private List<PotionEffect> potionEffects;
+    private final List<PotionEffect> potionEffects;
 
     /**
      * SplashRing animation/particle effect. It is essentially a splash lingering potion with extra options

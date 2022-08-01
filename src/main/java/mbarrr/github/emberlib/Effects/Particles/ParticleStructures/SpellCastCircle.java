@@ -1,33 +1,29 @@
 package mbarrr.github.emberlib.Effects.Particles.ParticleStructures;
 
-import org.apache.commons.lang.enums.Enum;
-import org.bukkit.*;
-import org.bukkit.entity.AreaEffectCloud;
-import org.bukkit.entity.EntityType;
+import org.bukkit.Color;
+import org.bukkit.Location;
+import org.bukkit.Particle;
+import org.bukkit.World;
 import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Spellcaster;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class SpellCastCircle {
 
-    private Location location;
+    private final Location location;
     private BukkitRunnable bukkitRunnable; //loop runnable
     private BukkitRunnable cancellationRunnable;
-    private long period = 2; //time between loops in ticks
-    private Plugin instance; //plugin instance
-    private World world; //world to spawn particles in
+    private final long period = 2; //time between loops in ticks
+    private final Plugin instance; //plugin instance
+    private final World world; //world to spawn particles in
     private Particle.DustOptions dustOptions;
-    private double radius;
-    private int duration;
+    private final double radius;
+    private final int duration;
     int red = 255;
     int green = 0;
 
-    private LivingEntity owner;
-    private Particle ringParticle = Particle.REDSTONE;
+    private final LivingEntity owner;
+    private final Particle ringParticle = Particle.REDSTONE;
     private Location point;
     private Location point2;
 

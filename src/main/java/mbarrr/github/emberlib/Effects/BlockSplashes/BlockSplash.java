@@ -16,12 +16,12 @@ import java.util.Random;
 public class BlockSplash implements Listener {
 
 
-    private List<FallingBlock> fallingBlocks = new ArrayList<>();
+    private final List<FallingBlock> fallingBlocks = new ArrayList<>();
 
-    private Random random = new Random();
-    private int numBlocks;
-    private Location startLoc;
-    private double velocity;
+    private final Random random = new Random();
+    private final int numBlocks;
+    private final Location startLoc;
+    private final double velocity;
     private List<Material> blockTypes;
 
     /**

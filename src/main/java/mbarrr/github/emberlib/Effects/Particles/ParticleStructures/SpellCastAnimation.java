@@ -8,12 +8,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class SpellCastAnimation extends ParticleStructure {
 
-    private Location point2;
+    private final Location point2;
     private Particle.DustOptions dustOptions;
     private int green = 0;
     private int red = 255;
-    private SpellCastCircle spellCastCircle;
-    private LivingEntity owner;
+    private final SpellCastCircle spellCastCircle;
+    private final LivingEntity owner;
 
 
     public SpellCastAnimation(JavaPlugin instance, double radius, Location location, int duration, LivingEntity owner) {

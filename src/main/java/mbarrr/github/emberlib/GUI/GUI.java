@@ -21,10 +21,10 @@ import java.util.List;
 
 public class GUI implements Listener {
 
-    private List<GUI> childGUIS;
-    private GUI parentGUI;
-    private List<Inventory> pages;
-    private GUILib guiLib;
+    private final List<GUI> childGUIS;
+    private final GUI parentGUI;
+    private final List<Inventory> pages;
+    private final GUILib guiLib;
 
     public GUI(GUILib guiLib, int size, String title, Plugin instance, GUI parentGUI) {
         instance.getServer().getPluginManager().registerEvents(this, instance);
