@@ -36,7 +36,7 @@ public class PortalAnimation {
         }
     }
 
-    protected void onTick(){
+    public void onTick(){
         location.getWorld().spawnParticle(particle, location, numParticles, offset, 1, offset);
     }
 }
