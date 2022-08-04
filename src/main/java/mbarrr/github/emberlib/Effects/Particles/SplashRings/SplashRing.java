@@ -53,10 +53,10 @@ public class SplashRing {
 
         spawn();
 
-        if(this.playerToFollow != null){
-            loadRunnable();
-            start();
-        }
+
+        loadRunnable();
+        start();
+
     }
 
     public void spawn(){
@@ -86,7 +86,9 @@ public class SplashRing {
 
     //Teleport the areaEffectCloud to the owner every tick
     public void onTick(){
-        areaEffectCloud.teleport(playerToFollow);
+        if(this.playerToFollow != null){
+            areaEffectCloud.teleport(playerToFollow);
+        }
     }
 
     //Load the bucketrunnable
@@ -121,7 +123,7 @@ public class SplashRing {
         bukkitRunnable.cancel();
     }
 
-    protected AreaEffectCloud getAreaEffectCloud(){
+    public AreaEffectCloud getAreaEffectCloud(){
         return areaEffectCloud;
     }
 
