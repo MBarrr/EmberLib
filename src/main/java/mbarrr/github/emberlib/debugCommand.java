@@ -1,15 +1,26 @@
 package mbarrr.github.emberlib;
 
-import mbarrr.github.emberlib.Effects.Particles.ParticleStructures.BlockSpellAnimation;
-import org.bukkit.Color;
+import mbarrr.github.emberlib.Effects.Particles.IlluminateBlock;
+import mbarrr.github.emberlib.Effects.Particles.ParticleWhoosh;
+import org.bukkit.*;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
+import org.spigotmc.event.entity.EntityDismountEvent;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class debugCommand implements CommandExecutor {
 
+    Particle[] particles = Particle.values();
     JavaPlugin instance;
 
     public debugCommand(JavaPlugin instance){
@@ -24,29 +35,17 @@ public class debugCommand implements CommandExecutor {
 
         Player player = (Player) sender;
 
-        player.sendMessage("runbdsing");
-
-        /**
-         *         double radius = Double.parseDouble(args[0]);
-         *         int duration = Integer.parseInt(args[1]);
-         *         Particle particleType = Particle.valueOf(args[2]);
-         *         int period = Integer.parseInt(args[3]);
-         *         int numParticles = Integer.parseInt(args[4]);
-         *
-         *         PortalAnimation portalAnimation = new PortalAnimation(EmberLib.getInstance(), period, duration, numParticles, player.getLocation(), radius, particleType);
-         */
-
-        int duration = Integer.parseInt(args[0]);
-        double radius = Double.parseDouble(args[1]);
-        Color startColor = Color.fromRGB(Integer.parseInt(args[2]), Integer.parseInt(args[3]), Integer.parseInt(args[4]));
-        Color endColor = Color.fromRGB(Integer.parseInt(args[5]), Integer.parseInt(args[6]), Integer.parseInt(args[7]));
-        int size = Integer.parseInt(args[8]);
+        player.sendMessage("starting");
 
 
-        ///debugcommand 200 2 0 255 0 255 0 0 2
 
-        BlockSpellAnimation blockSpellAnimation = new BlockSpellAnimation(EmberLib.getInstance(), radius, size, player.getLocation(), duration, startColor, endColor);
+        Particle.DustOptions dustOptions = new Particle.DustOptions(Color.fromRGB(Integer.parseInt(args[0]), Integer.parseInt(args[1]), Integer.parseInt(args[2])), Float.parseFloat(args[3]));
 
+        ParticleWhoosh particleWhoosh = new ParticleWhoosh(player.getEyeLocation(), player.getLocation().getDirection(), EmberLib.getInstance(), 5, Particle.REDSTONE, dustOptions);
+        particleWhoosh.shoot();
+
+
+        player.sendMessage("finished");
         return true;
     }
 }

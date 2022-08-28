@@ -53,7 +53,6 @@ public class SplashRing {
 
         spawn();
 
-
         loadRunnable();
         start();
 
@@ -126,5 +125,7 @@ public class SplashRing {
     public AreaEffectCloud getAreaEffectCloud(){
         return areaEffectCloud;
     }
+
+
 
 }
