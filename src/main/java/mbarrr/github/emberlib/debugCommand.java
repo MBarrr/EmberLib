@@ -1,15 +1,18 @@
 package mbarrr.github.emberlib;
 
 import mbarrr.github.emberlib.Effects.Particles.IlluminateBlock;
+import mbarrr.github.emberlib.Effects.Particles.ParticlePoof;
 import mbarrr.github.emberlib.Effects.Particles.ParticleWhoosh;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
@@ -38,11 +41,19 @@ public class debugCommand implements CommandExecutor {
         player.sendMessage("starting");
 
 
+        Plugin plugin = EmberLib.getInstance();
+        Material data = Material.valueOf(args[0]);
+        LivingEntity entity = player;
 
-        Particle.DustOptions dustOptions = new Particle.DustOptions(Color.fromRGB(Integer.parseInt(args[0]), Integer.parseInt(args[1]), Integer.parseInt(args[2])), Float.parseFloat(args[3]));
 
-        ParticleWhoosh particleWhoosh = new ParticleWhoosh(player.getEyeLocation(), player.getLocation().getDirection(), EmberLib.getInstance(), 5, Particle.REDSTONE, dustOptions);
-        particleWhoosh.shoot();
+        BukkitRunnable bukkitRunnable = new BukkitRunnable() {
+            @Override
+            public void run() {
+                ParticlePoof particlePoof = new ParticlePoof(entity, plugin, data);
+                particlePoof.start();
+            }
+        };
+        bukkitRunnable.runTaskTimer(EmberLib.getInstance(), 0, 40);
 
 
         player.sendMessage("finished");
