@@ -1,17 +1,29 @@
 package mbarrr.github.emberlib;
 
 
+import mbarrr.github.emberlib.Effects.Particles.ParticleFollowProjectile;
 import org.bukkit.Bukkit;
+import org.bukkit.Color;
 import org.bukkit.Location;
+import org.bukkit.Particle;
+import org.bukkit.entity.Projectile;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 
-public final class EmberLib extends JavaPlugin {
+import java.util.List;
+import java.util.Random;
+
+public final class EmberLib extends JavaPlugin implements Listener {
+
+    Random random = new Random();
 
     @Override
     public void onEnable() {
         getServer().getPluginCommand("debugcommand").setExecutor(new debugCommand(this));
-
+        getServer().getPluginManager().registerEvents(this, this);
     }
 
     @Override
@@ -34,4 +46,11 @@ public final class EmberLib extends JavaPlugin {
         Vector rotated = new Vector(r1.dot(v), 0, r2.dot(v)); // Perform the matrix multiplication
         return rotated.add(axis.toVector()).toLocation(loc.getWorld());
     }
+
+    @EventHandler
+    public void asd(EntityShootBowEvent e){
+        ParticleFollowProjectile particleFollowProjectile = new ParticleFollowProjectile(EmberLib.getInstance(), Particle.CAMPFIRE_COSY_SMOKE, (Projectile) e.getProjectile());
+
+    }
+
 }
