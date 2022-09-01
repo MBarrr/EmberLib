@@ -1,19 +1,17 @@
 package mbarrr.github.emberlib.Effects.Particles;
 
-import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.block.data.BlockData;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.plugin.Plugin;
 
 public class ParticlePoof {
 
-    private BlockData blockData;
-    private Location location;
-    private Plugin plugin;
+    private final BlockData blockData;
+    private final Location location;
+    private final Plugin plugin;
 
     public ParticlePoof(LivingEntity entity, Plugin plugin, Material material){
         this(entity.getEyeLocation().add(entity.getLocation().getDirection().clone()), plugin, material);

@@ -11,13 +11,13 @@ public class ParticleLine {
 
     private Location startLoc;
     private Vector dir;
-    private Particle.DustOptions dustOptions;
+    private final Particle.DustOptions dustOptions;
     private double length;
     private int period;
-    private Plugin plugin;
-    private double dist;
-    private Particle particle;
-    private int numTimes;
+    private final Plugin plugin;
+    private final double dist;
+    private final Particle particle;
+    private final int numTimes;
 
     public ParticleLine(Location startLoc, Vector dir, double length, int period, Plugin plugin, double dist, Particle particle, Particle.DustOptions dustOptions) {
         this.startLoc = startLoc.clone();

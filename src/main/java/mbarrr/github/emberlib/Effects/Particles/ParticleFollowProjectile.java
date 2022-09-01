@@ -1,14 +1,10 @@
 package mbarrr.github.emberlib.Effects.Particles;
 
-import mbarrr.github.emberlib.EmberLib;
-import org.bukkit.Bukkit;
 import org.bukkit.Color;
-import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.Projectile;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.util.Vector;
 
 public class ParticleFollowProjectile {
 

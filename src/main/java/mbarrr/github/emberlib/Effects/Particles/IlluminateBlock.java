@@ -3,7 +3,6 @@ package mbarrr.github.emberlib.Effects.Particles;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.block.Block;
-import org.bukkit.entity.FallingBlock;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -17,11 +16,11 @@ public class IlluminateBlock {
     private double zOffset = 0;
 
     private int i = 0;
-    private Location location;
-    private Particle particle;
-    private Plugin plugin;
-    private int duration;
-    private double height;
+    private final Location location;
+    private final Particle particle;
+    private final Plugin plugin;
+    private final int duration;
+    private final double height;
 
 
     /**

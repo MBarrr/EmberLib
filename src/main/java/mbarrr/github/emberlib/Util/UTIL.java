@@ -1,9 +1,5 @@
 package mbarrr.github.emberlib.Util;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -13,7 +9,10 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class UTIL {
 
@@ -43,7 +42,7 @@ public class UTIL {
      * @param item
      * @return String or null if itemtype was air, or if item was null
      */
-    public static String serializeItem(ItemStack item){
+    public static JSONObject serializeItem(ItemStack item){
         //Get item material and amount
         if(item == null) return null;
         Material itemType = item.getType();
@@ -55,7 +54,7 @@ public class UTIL {
 
         ItemMeta meta = item.getItemMeta();
 
-        if(meta == null) return obj.toString();
+        if(meta == null) return obj;
 
         //Get item lore and display name
         JSONArray jsonLore = new JSONArray();
@@ -90,7 +89,7 @@ public class UTIL {
         obj.put("enchantTypes", enchantTypes);
         obj.put("enchantLevels", enchantLevels);
 
-        return obj.toString();
+        return obj;
     }
 
     /**
@@ -99,13 +98,12 @@ public class UTIL {
      * @param serializedItem String to deserialize
      * @return Deserialized item
      */
-    public static ItemStack deserializeItem(String serializedItem){
+    public static ItemStack deserializeItem(JSONObject serializedItem){
 
-        JsonElement asd = JsonParser.parseString(serializedItem);
-        JsonObject jsonObject = asd.getAsJsonObject();
+        JSONObject jsonObject = serializedItem;
 
-        int amount = jsonObject.get("amount").getAsInt();
-        String matString = jsonObject.get("material").getAsString();
+        int amount = jsonObject.getInt("amount");
+        String matString = jsonObject.getString("material");
         Material material = Material.valueOf(matString);
 
         ItemStack item = new ItemStack(material, amount);
@@ -113,25 +111,25 @@ public class UTIL {
         if(!jsonObject.has("lore") || !jsonObject.has("displayName")) return item;
 
         List<String> lore = new ArrayList<>();
-        JsonArray jsonLore = jsonObject.get("lore").getAsJsonArray();
+        JSONArray jsonLore = jsonObject.getJSONArray("lore");
 
-        for(int i = 0; i < jsonLore.size(); i++){
-            lore.add(jsonLore.get(i).getAsString());
+        for(int i = 0; i < jsonLore.length(); i++){
+            lore.add(jsonLore.getString(i));
         }
 
         ItemMeta meta = item.getItemMeta();
         meta.setLore(lore);
 
-        String displayName = jsonObject.get("displayName").getAsString();
+        String displayName = jsonObject.getString("displayName");
 
         if(!displayName.equals("`null`")) meta.setDisplayName(displayName);
 
-        JsonArray jsonEnchants = jsonObject.get("enchantTypes").getAsJsonArray();
-        JsonArray jsonLevels = jsonObject.get("enchantLevels").getAsJsonArray();
+        JSONArray jsonEnchants = jsonObject.getJSONArray("enchantTypes");
+        JSONArray jsonLevels = jsonObject.getJSONArray("enchantLevels");
 
-        for(int i = 0; i < jsonEnchants.size(); i++){
-            String ench = jsonEnchants.get(i).getAsString();
-            int level = jsonLevels.get(i).getAsInt();
+        for(int i = 0; i < jsonEnchants.length(); i++){
+            String ench = jsonEnchants.getString(i);
+            int level = jsonLevels.getInt(i);
             Enchantment enchantment = Enchantment.getByKey(NamespacedKey.fromString(ench));
             if(enchantment == null) continue;
 
