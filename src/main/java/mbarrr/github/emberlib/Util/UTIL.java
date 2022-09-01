@@ -47,7 +47,6 @@ public class UTIL {
         //Get item material and amount
         if(item == null) return null;
         Material itemType = item.getType();
-        if(itemType == Material.AIR) return null;
         int amount = item.getAmount();
 
         JSONObject obj = new JSONObject();
