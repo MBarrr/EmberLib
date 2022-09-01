@@ -6,7 +6,7 @@
 
     <groupId>mbarrr.github</groupId>
     <artifactId>EmberLib</artifactId>
-    <version>1.0.9</version>
+    <version>1.1.1</version>
     <packaging>jar</packaging>
 
     <name>EmberLib</name>
@@ -75,6 +75,11 @@
             <artifactId>annotations</artifactId>
             <version>RELEASE</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20200518</version>
         </dependency>
     </dependencies>
 </project>

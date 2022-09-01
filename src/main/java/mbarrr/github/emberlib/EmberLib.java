@@ -10,6 +10,7 @@ import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityShootBowEvent;
+import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 
@@ -48,8 +49,8 @@ public final class EmberLib extends JavaPlugin implements Listener {
     }
 
     @EventHandler
-    public void asd(EntityShootBowEvent e){
-        ParticleFollowProjectile particleFollowProjectile = new ParticleFollowProjectile(EmberLib.getInstance(), Particle.CAMPFIRE_COSY_SMOKE, (Projectile) e.getProjectile());
+    public void asd(ProjectileLaunchEvent e){
+        ParticleFollowProjectile particleFollowProjectile = new ParticleFollowProjectile(EmberLib.getInstance(), Particle.CAMPFIRE_COSY_SMOKE, e.getEntity());
 
     }
 

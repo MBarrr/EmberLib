@@ -12,8 +12,6 @@ import org.bukkit.util.Vector;
 
 public class ParticleFollowProjectile {
 
-
-
     public ParticleFollowProjectile(Plugin plugin, Projectile projectile, Color color, float size) {
 
         Particle particle = Particle.REDSTONE;

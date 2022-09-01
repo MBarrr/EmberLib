@@ -3,6 +3,7 @@ package mbarrr.github.emberlib;
 import mbarrr.github.emberlib.Effects.Particles.IlluminateBlock;
 import mbarrr.github.emberlib.Effects.Particles.ParticlePoof;
 import mbarrr.github.emberlib.Effects.Particles.ParticleWhoosh;
+import mbarrr.github.emberlib.Util.UTIL;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.block.data.BlockData;
@@ -12,6 +13,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -40,21 +42,13 @@ public class debugCommand implements CommandExecutor {
 
         player.sendMessage("starting");
 
+        String str = UTIL.serializeItem(player.getEquipment().getItemInMainHand());
 
-        Plugin plugin = EmberLib.getInstance();
-        Material data = Material.valueOf(args[0]);
-        LivingEntity entity = player;
+        ItemStack item = UTIL.deserializeItem(str);
 
+        player.getInventory().addItem(item);
 
-        BukkitRunnable bukkitRunnable = new BukkitRunnable() {
-            @Override
-            public void run() {
-                ParticlePoof particlePoof = new ParticlePoof(entity, plugin, data);
-                particlePoof.start();
-            }
-        };
-        bukkitRunnable.runTaskTimer(EmberLib.getInstance(), 0, 40);
-
+        Bukkit.getConsoleSender().sendMessage(str);
 
         player.sendMessage("finished");
         return true;
