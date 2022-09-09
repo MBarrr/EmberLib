@@ -64,6 +64,7 @@ public class SplashRing {
             //Set area effect cloud properties
             areaEffectCloud = (AreaEffectCloud) world.spawnEntity(location, EntityType.AREA_EFFECT_CLOUD);
             areaEffectCloud.setParticle(particleType);
+            areaEffectCloud.setWaitTime(0);
             areaEffectCloud.setRadius(radius);
             areaEffectCloud.setColor(color);
             areaEffectCloud.setDuration(duration);

@@ -40,7 +40,6 @@ public class IlluminateBlock {
     }
 
     public void start(){
-
         location.add(0,height,0);
         List<Location> points = new ArrayList<>();
 

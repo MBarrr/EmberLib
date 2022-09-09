@@ -5,6 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class debugCommand implements CommandExecutor {
@@ -25,6 +26,12 @@ public class debugCommand implements CommandExecutor {
         Player player = (Player) sender;
 
         player.sendMessage("starting");
+
+        ItemStack item = player.getEquipment().getItemInMainHand();
+
+        player.getInventory().addItem(ItemStack.deserialize(item.serialize()));
+
+
 
         player.sendMessage("finished");
         return true;
