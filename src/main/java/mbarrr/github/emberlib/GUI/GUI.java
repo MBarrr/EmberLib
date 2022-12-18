@@ -1,5 +1,6 @@
 package mbarrr.github.emberlib.GUI;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
@@ -37,8 +38,6 @@ public class GUI implements Listener {
         // Create a new inventory, with no owner. size and title taken from args
         this.parentGUI = parentGUI;
 
-
-
         //load the first page
         addPage(size,title);
 
@@ -50,7 +49,7 @@ public class GUI implements Listener {
     public void addPage(int size, String title){
 
         //add right page changer to old rightmost page
-        Inventory newPage = Bukkit.createInventory(null, size, title);
+        Inventory newPage = Bukkit.createInventory(null, size, Component.text(title));
 
         if(!pages.isEmpty()) {
             //Get the current rightmost page
@@ -145,6 +144,7 @@ public class GUI implements Listener {
 
     private void checkIfArrows(InventoryClickEvent e){
         //check if item is an arrow or points to a child/parent gui, and return if it does not
+        if(e.getCurrentItem() == null) return;
         if(!guiLib.hasItemAction(e.getCurrentItem(), guiLib.getArrowKey())) return;
 
         int itemAction = guiLib.getItemAction(e.getCurrentItem(), guiLib.getArrowKey());

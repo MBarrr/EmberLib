@@ -1,5 +1,6 @@
 package mbarrr.github.emberlib.Util;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -16,30 +17,11 @@ import java.util.Set;
 
 public class UTIL {
 
-    /**
-     * Return whether a location is between two locations
-     * @param firstBound First bound
-     * @param secondBound Second bound
-     * @param location Location to test
-     * @return true if location is between the two points, otherwise false
-     */
-    public static boolean isLocationInBound(Location firstBound, Location secondBound, Location location){
-
-        double x1 = firstBound.getX();
-        double y1 = firstBound.getY();
-        double z1 = firstBound.getZ();
-
-        double x2 = secondBound.getX();
-        double y2 = secondBound.getY();
-        double z2 = secondBound.getZ();
-
-        return (location.getX() > x1) && (location.getY() > y1) && (location.getZ() > z1) && (location.getX() < x2) && (location.getY() < y2) && (location.getZ() < z2);
-    }
 
     /**
      * Turn an itemstack into a string to be saved etc
      * Currently stores: material, amount, enchantments, displayname, lore
-     * @param item
+     * @param item item
      * @return String or null if itemtype was air, or if item was null
      */
     public static JSONObject serializeItem(ItemStack item){
@@ -110,15 +92,15 @@ public class UTIL {
 
         if(!jsonObject.has("lore") || !jsonObject.has("displayName")) return item;
 
-        List<String> lore = new ArrayList<>();
+        List<net.kyori.adventure.text.Component> lore = new ArrayList<>();
         JSONArray jsonLore = jsonObject.getJSONArray("lore");
 
         for(int i = 0; i < jsonLore.length(); i++){
-            lore.add(jsonLore.getString(i));
+            lore.add(Component.text(jsonLore.getString(i)));
         }
 
         ItemMeta meta = item.getItemMeta();
-        meta.setLore(lore);
+        meta.lore(lore);
 
         String displayName = jsonObject.getString("displayName");
 
