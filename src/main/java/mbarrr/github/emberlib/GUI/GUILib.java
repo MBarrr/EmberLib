@@ -8,8 +8,6 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 
-import java.util.List;
-
 public final class GUILib{
 
     Plugin instance;

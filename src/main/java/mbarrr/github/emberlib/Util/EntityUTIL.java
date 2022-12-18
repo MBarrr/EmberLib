@@ -1,7 +1,6 @@
 package mbarrr.github.emberlib.Util;
 
 import org.bukkit.attribute.Attribute;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 
 public class EntityUTIL {

@@ -1,7 +1,6 @@
 package mbarrr.github.emberlib.Util;
 
 import net.kyori.adventure.text.Component;
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
