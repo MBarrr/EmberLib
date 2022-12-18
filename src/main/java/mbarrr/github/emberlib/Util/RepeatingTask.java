@@ -19,12 +19,12 @@ public class RepeatingTask {
      */
     public RepeatingTask(JavaPlugin instance, long delay, long period, int numRepeats){
 
-        int i = 0;
+        final int[] i = {0};
 
         BukkitRunnable runnable = new BukkitRunnable() {
             @Override
             public void run() {
-                if(numRepeats == i){
+                if(numRepeats == i[0]){
                     cancel();
                     return;
                 }
@@ -32,6 +32,8 @@ public class RepeatingTask {
                 if(!repeat()){
                     cancel();
                 }
+
+                i[0]++;
             }
         };
 
