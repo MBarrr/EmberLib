@@ -8,8 +8,6 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.Plugin;
 
-import java.util.List;
-
 public final class GUILib{
 
     Plugin instance;
@@ -41,20 +39,6 @@ public final class GUILib{
         itemStack.setItemMeta(itemMeta);
 
         return itemStack;
-    }
-
-    public ItemStack renameItem(ItemStack item, String name){
-        ItemMeta itemMeta = item.getItemMeta();
-        itemMeta.setDisplayName(name);
-        item.setItemMeta(itemMeta);
-        return item;
-    }
-
-    public ItemStack setItemLore(ItemStack item, List<String> lore){
-        ItemMeta itemMeta = item.getItemMeta();
-        itemMeta.setLore(lore);
-        item.setItemMeta(itemMeta);
-        return item;
     }
 
     public int getItemAction(ItemStack item, NamespacedKey key){

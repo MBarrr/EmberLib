@@ -69,9 +69,12 @@ public class SplashRing {
             areaEffectCloud.setColor(color);
             areaEffectCloud.setDuration(duration);
 
-            for(PotionEffect potionEffect:potionEffects){
-                areaEffectCloud.addCustomEffect(potionEffect, false);
+            if(potionEffects != null){
+                for(PotionEffect potionEffect:potionEffects){
+                    areaEffectCloud.addCustomEffect(potionEffect, false);
+                }
             }
+
 
             if(sender != null){
                 areaEffectCloud.setSource(sender);

@@ -23,7 +23,7 @@ public class UsageShrinkSplashRing extends SplashRing{
      * @param duration       Time in ticks for the cloud to despawn
      * @param particleType   Type of particle
      */
-    public UsageShrinkSplashRing(Location location, @Nullable LivingEntity sender, @Nullable LivingEntity playerToFollow, float radius, Color color, Plugin instance, int duration, Particle particleType, int usageShrinkSplashRing, List<PotionEffect> potionEffects) {
+    public UsageShrinkSplashRing(Location location, @Nullable LivingEntity sender, @Nullable LivingEntity playerToFollow, float radius, Color color, Plugin instance, int duration, Particle particleType, float usageShrinkSplashRing, List<PotionEffect> potionEffects) {
         super(location, sender, playerToFollow, radius, color, instance, duration, particleType, potionEffects);
         getAreaEffectCloud().setRadiusOnUse(usageShrinkSplashRing);
     }
