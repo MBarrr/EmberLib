@@ -6,6 +6,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -128,7 +129,6 @@ public class GUI implements Listener {
     public void onInventoryClick(InventoryClickEvent e) {
         //stop the code if the inventory is not the menu we created
         if (!pages.contains(e.getClickedInventory()) && !pages.contains(e.getInventory())) return;
-
 
         //get clicked item
         final ItemStack clickedItem = e.getCurrentItem();
