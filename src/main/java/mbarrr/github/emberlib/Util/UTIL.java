@@ -6,6 +6,7 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.util.Vector;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -16,6 +17,16 @@ import java.util.Set;
 
 public class UTIL {
 
+
+    /**
+     * Returns the normalized inverse of a location excluding y axis
+     * @param dir
+     * @return The normalized inverse of the location
+     */
+    public static Vector getInvDir(Vector dir){
+        Vector invDir = new Vector(-1/dir.getX(), 0, -1/dir.getZ());
+        return invDir.normalize();
+    }
 
     /**
      * Turn an itemstack into a string to be saved etc
