@@ -128,6 +128,7 @@ public class GUI implements Listener {
     // Check for clicks on items
     @EventHandler (priority = EventPriority.HIGH)
     public void onInventoryClick(InventoryClickEvent e) {
+
         //stop the code if the inventory is not the menu we created
         if(!pages.contains(e.getClickedInventory()) && !pages.contains(e.getInventory())) return;
 
