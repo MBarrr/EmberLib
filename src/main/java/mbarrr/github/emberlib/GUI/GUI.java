@@ -130,6 +130,8 @@ public class GUI implements Listener {
         //stop the code if the inventory is not the menu we created
         if (!pages.contains(e.getClickedInventory()) && !pages.contains(e.getInventory())) return;
 
+        e.setCancelled(true);
+
         //get clicked item
         final ItemStack clickedItem = e.getCurrentItem();
 
