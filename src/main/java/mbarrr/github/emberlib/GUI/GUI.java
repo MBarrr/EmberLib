@@ -5,6 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -125,10 +126,10 @@ public class GUI implements Listener {
     }
 
     // Check for clicks on items
-    @EventHandler
+    @EventHandler (priority = EventPriority.HIGH)
     public void onInventoryClick(InventoryClickEvent e) {
         //stop the code if the inventory is not the menu we created
-        if (!pages.contains(e.getClickedInventory()) && !pages.contains(e.getInventory())) return;
+        if(!pages.contains(e.getClickedInventory()) && !pages.contains(e.getInventory())) return;
 
         e.setCancelled(true);
 
