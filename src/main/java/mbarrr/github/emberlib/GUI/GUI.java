@@ -143,7 +143,6 @@ public class GUI implements Listener {
         //the clicked item is neither null nor air, and the inventory and player who is clicking are correct
         checkIfArrows(e);
         clickValid(e);
-        e.setCancelled(true);
     }
 
     private void checkIfArrows(InventoryClickEvent e){
